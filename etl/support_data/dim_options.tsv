@@ -1,0 +1,127 @@
+OPTION_ID	LANGUAGE_ID	OPTION_NAME	OPTION_DESC	OPTION_COMMENT	UPDATED_ON	UPDATED_BY
+37	2	Ne pas imprimer l'ID de l'élément dans les commentaires			2015/10/09 10:10:09.000000000	F_EMMPER
+38	2	Imprimer plan d'action			2015/10/09 10:10:09.000000000	F_EMMPER
+39	2	Ne pas imprimer l'ID de l'élément dans la liste de contrôle			2015/10/09 10:10:09.000000000	F_EMMPER
+40	2	Ne pas imprimer les points max			2015/10/09 10:10:09.000000000	F_EMMPER
+41	2	Desengage automatic authorization			2015/10/09 10:10:09.000000000	F_EMMPER
+42	2	Permettre les formules à résultat négatif			2015/10/09 10:10:09.000000000	F_EMMPER
+43	2	Historiques justifiés à gauche			2015/10/09 10:10:09.000000000	F_EMMPER
+44	2	N'imprimer que les éléments évalués			2015/10/09 10:10:09.000000000	F_EMMPER
+45	2	N'imprimer que les titres (sans méthode d'évaluation) et les éléments évalués			2015/10/09 10:10:09.000000000	F_EMMPER
+46	2	"Tous les éléments sont obligatoires (""NE"" possible)"			2015/10/09 10:10:09.000000000	F_EMMPER
+47	2	Afficer le score à droite			2015/10/09 10:10:09.000000000	F_EMMPER
+48	2	Rapport imprimé avec les textes de variante à la place de ceux de la liste de contrôle			2015/10/09 10:10:09.000000000	F_EMMPER
+49	2	Limite la formule aux historique de l'année en cours			2015/10/09 10:10:09.000000000	F_EMMPER
+50	2	Afficher le titre complémentaire sur la seconde ligne			2015/10/09 10:10:09.000000000	F_EMMPER
+51	2	Rapport imprimé sans logo			2015/10/09 10:10:09.000000000	F_EMMPER
+52	2	Limite la formule aux historiques de la même variation, ou celle précisée			2015/10/09 10:10:09.000000000	F_EMMPER
+53	2	Limite la formule aux historiques des passages courant et précédent			2015/10/09 10:10:09.000000000	F_EMMPER
+54	2	Derniers historique à gauche			2015/10/09 10:10:10.000000000	F_EMMPER
+55	2	Rapport imprimé seulement avec l'intervention courante			2015/10/09 10:10:10.000000000	F_EMMPER
+56	2	Rapport imprimé avec la visite actuelle et 1 historique			2015/10/09 10:10:10.000000000	F_EMMPER
+57	2	Rapport imprimé avec la visite actuelle et 2 historiques			2015/10/09 10:10:10.000000000	F_EMMPER
+58	2	Rapport imprimé avec la visite actuelle et 3 historiques			2015/10/09 10:10:10.000000000	F_EMMPER
+59	2	Rapport imprimé avec la visite actuelle et 4 historiques			2015/10/09 10:10:10.000000000	F_EMMPER
+60	2	Plan d'action Word			2015/10/09 10:10:10.000000000	F_EMMPER
+61	1	COFRAC grid			2016/04/08 10:09:11.000000000	F_EMMPER
+61	2	Grille COFRAC			2016/04/08 10:09:11.000000000	F_EMMPER
+63	1	Hide historical ratings on mobile device			2017/03/28 15:47:57.000000000	F_EMMPER
+63	2	Cacher l'historique sur tabletPC			2017/03/28 15:47:57.000000000	F_EMMPER
+62	1	"""NA"" is forbidden"			2017/02/15 17:26:24.000000000	F_EMMPER
+62	2	"""S/O"" interdit"			2017/02/15 17:26:24.000000000	F_EMMPER
+1	1	Printed in the comments even if no comment			2015/10/09 10:10:05.000000000	F_EMMPER
+2	1	Alert item (data-processing transfer)			2015/10/09 10:10:05.000000000	F_EMMPER
+3	1	Do not print in the comments even if comment			2015/10/09 10:10:05.000000000	F_EMMPER
+4	1	No seperation line with next item (grouped)			2015/10/09 10:10:05.000000000	F_EMMPER
+5	1	Comment is mandatory on bad entries (red RM entries)			2015/10/09 10:10:05.000000000	F_EMMPER
+6	1	Comment is mandatory on medium or bad entries (red or orange RM entries)			2015/10/09 10:10:05.000000000	F_EMMPER
+7	1	Page break before the item			2015/10/09 10:10:05.000000000	F_EMMPER
+8	1	Item label in bold			2015/10/09 10:10:05.000000000	F_EMMPER
+9	1	Item result in bold			2015/10/09 10:10:05.000000000	F_EMMPER
+10	1	Item label in italic			2015/10/09 10:10:06.000000000	F_EMMPER
+11	1	Replace item label with comment			2015/10/09 10:10:06.000000000	F_EMMPER
+12	1	Hide item reference id in the checklist			2015/10/09 10:10:06.000000000	F_EMMPER
+13	1	Hide item			2015/10/09 10:10:06.000000000	F_EMMPER
+14	1	Numeration table layout (new option)			2015/10/09 10:10:06.000000000	F_EMMPER
+15	1	Item label with gray background			2015/10/09 10:10:06.000000000	F_EMMPER
+16	1	Page break before this item in the comments			2015/10/09 10:10:06.000000000	F_EMMPER
+17	1	Line break before the item (no cut on the historic area)			2015/10/09 10:10:06.000000000	F_EMMPER
+18	1	Line break before the item (with cut on the historic area)			2015/10/09 10:10:06.000000000	F_EMMPER
+19	1	Item label underlined			2015/10/09 10:10:06.000000000	F_EMMPER
+20	1	Transfer item (data-processing transfer)			2015/10/09 10:10:06.000000000	F_EMMPER
+21	1	Item label in upper case			2015/10/09 10:10:06.000000000	F_EMMPER
+22	1	Display dark background instead of item result			2015/10/09 10:10:06.000000000	F_EMMPER
+23	1	Hidden on the PDA but printed on the report			2015/10/09 10:10:06.000000000	F_EMMPER
+24	1	Hidden only on the report			2015/10/09 10:10:06.000000000	F_EMMPER
+25	1	Complete item label with comment			2015/10/09 10:10:06.000000000	F_EMMPER
+26	1	Item listed in part 1 of flyleaf			2015/10/09 10:10:06.000000000	F_EMMPER
+27	1	Item listed in part 2 of flyleaf			2015/10/09 10:10:06.000000000	F_EMMPER
+28	1	Item for checklist score			2015/10/09 10:10:06.000000000	F_EMMPER
+29	1	Anonyme visit, the person name and operational unit are not printed			2015/10/09 10:10:06.000000000	F_EMMPER
+30	1	Do not print comment title (comment + remark)			2015/10/09 10:10:06.000000000	F_EMMPER
+31	1	Do not print comment part			2015/10/09 10:10:06.000000000	F_EMMPER
+32	1	Comment is mandatory on bad entries (red RM entries)			2015/10/09 10:10:06.000000000	F_EMMPER
+33	1	Comment is mandatory on medium or bad entries (orange and red RM entries)			2015/10/09 10:10:06.000000000	F_EMMPER
+34	1	Page number is printed in the bottom right of the page instead of top left			2015/10/09 10:10:06.000000000	F_EMMPER
+35	1	Do not print the legend			2015/10/09 10:10:06.000000000	F_EMMPER
+36	1	Display Action Plan comments on HI report (not done by default if option J is selected)			2015/10/09 10:10:06.000000000	F_EMMPER
+37	1	Do not print item reference ID in the comments			2015/10/09 10:10:06.000000000	F_EMMPER
+38	1	Print action plan			2015/10/09 10:10:07.000000000	F_EMMPER
+39	1	Do not print Item reference ID in the checklist			2015/10/09 10:10:07.000000000	F_EMMPER
+40	1	Do not print the maxpoints			2015/10/09 10:10:07.000000000	F_EMMPER
+41	1	Desengage automatic authorization			2015/10/09 10:10:07.000000000	F_EMMPER
+42	1	Allow negative result of formula			2015/10/09 10:10:07.000000000	F_EMMPER
+43	1	Left justify the historics			2015/10/09 10:10:07.000000000	F_EMMPER
+44	1	Only print evaluated items (check at least if once in the historics or current visit)			2015/10/09 10:10:07.000000000	F_EMMPER
+45	1	Only print title (without rating method) and evaluated items (check current visit only)			2015/10/09 10:10:07.000000000	F_EMMPER
+46	1	"All items are required (""NE"" is possible)"			2015/10/09 10:10:07.000000000	F_EMMPER
+47	1	Display score value on the right			2015/10/09 10:10:07.000000000	F_EMMPER
+48	1	Report printed with variation label instead of checklist label			2015/10/09 10:10:07.000000000	F_EMMPER
+49	1	Limitate formula historics to current year only			2015/10/09 10:10:07.000000000	F_EMMPER
+50	1	Display additional title on a second line			2015/10/09 10:10:07.000000000	F_EMMPER
+51	1	Report printed without logo			2015/10/09 10:10:07.000000000	F_EMMPER
+52	1	Limitate formula historics to the given or same variation_id only			2015/10/09 10:10:07.000000000	F_EMMPER
+53	1	Override and limitate formula historics on current and first past visit only			2015/10/09 10:10:07.000000000	F_EMMPER
+54	1	Most recent historic on the left			2015/10/09 10:10:07.000000000	F_EMMPER
+55	1	Report printed with only the current visit			2015/10/09 10:10:07.000000000	F_EMMPER
+56	1	Report printed with current visit and 1 historic			2015/10/09 10:10:07.000000000	F_EMMPER
+57	1	Report printed with current visit and 2 historics			2015/10/09 10:10:07.000000000	F_EMMPER
+58	1	Report printed with current visit and 3 historics			2015/10/09 10:10:07.000000000	F_EMMPER
+59	1	Report printed with current visit and 4 historics			2015/10/09 10:10:07.000000000	F_EMMPER
+60	1	Display Word action plan			2015/10/09 10:10:07.000000000	F_EMMPER
+1	2	Imprimé dans les commentaires, même si aucun commentaire			2015/10/09 10:10:07.000000000	F_EMMPER
+2	2	Elément d'alerte (transfert de données)			2015/10/09 10:10:07.000000000	F_EMMPER
+3	2	Ne pas imprimer dans les commentaires, même si un commentaire			2015/10/09 10:10:07.000000000	F_EMMPER
+4	2	Aucune ligne de séparation avec le point suivant (groupées)			2015/10/09 10:10:07.000000000	F_EMMPER
+5	2	Commentaire obligatoire si marqué mauvais			2015/10/09 10:10:08.000000000	F_EMMPER
+6	2	Commentaire est obligatoire sur les moyennes ou mauvaises entrées (rouge ou orange)			2015/10/09 10:10:08.000000000	F_EMMPER
+7	2	Saut de page avant l'élément			2015/10/09 10:10:08.000000000	F_EMMPER
+8	2	Étiquette de l'élément en gras			2015/10/09 10:10:08.000000000	F_EMMPER
+9	2	Résultat d'élément en gras			2015/10/09 10:10:08.000000000	F_EMMPER
+10	2	Étiquette d'élément en italique			2015/10/09 10:10:08.000000000	F_EMMPER
+11	2	Remplacer l'étiquette de l'élément avec un commentaire			2015/10/09 10:10:08.000000000	F_EMMPER
+12	2	Masquer la référence de l'article id dans la liste de contrôle			2015/10/09 10:10:08.000000000	F_EMMPER
+13	2	Cacher l'élément			2015/10/09 10:10:08.000000000	F_EMMPER
+14	2	Numération disposition de la table (nouvelle option)			2015/10/09 10:10:08.000000000	F_EMMPER
+15	2	Étiquette d'élément avec un fond gris			2015/10/09 10:10:08.000000000	F_EMMPER
+16	2	Saut de page avant cet élément dans les commentaires			2015/10/09 10:10:08.000000000	F_EMMPER
+17	2	Saut de ligne avant l'élément (pas de coupure sur le quartier historique)			2015/10/09 10:10:08.000000000	F_EMMPER
+18	2	Saut de ligne avant l'élément (avec coupure sur le quartier historique)			2015/10/09 10:10:08.000000000	F_EMMPER
+19	2	Elément étiquette souligné			2015/10/09 10:10:08.000000000	F_EMMPER
+20	2	Point de transfert (transfert de données de traitement)			2015/10/09 10:10:08.000000000	F_EMMPER
+21	2	Étiquette d'élément en majuscules			2015/10/09 10:10:08.000000000	F_EMMPER
+22	2	Annonce fond noir au lieu du résultat d'élément			2015/10/09 10:10:08.000000000	F_EMMPER
+23	2	Caché sur le PDA, mais imprimé sur le rapport			2015/10/09 10:10:08.000000000	F_EMMPER
+24	2	Caché seulement sur le rapport			2015/10/09 10:10:08.000000000	F_EMMPER
+25	2	Compléter l'étiquette d'element avec le commentaire			2015/10/09 10:10:08.000000000	F_EMMPER
+26	2	Item listed in part 1 of flyleaf			2015/10/09 10:10:08.000000000	F_EMMPER
+27	2	Item listed in part 2 of flyleaf			2015/10/09 10:10:08.000000000	F_EMMPER
+28	2	Item pour le score de la grille			2015/10/09 10:10:08.000000000	F_EMMPER
+29	2	Intervention anonyme, les mentions de nom et d'unité opérationnelle ne sont pas imprimées			2015/10/09 10:10:08.000000000	F_EMMPER
+30	2	Ne pas imprimer le titre du commentaire			2015/10/09 10:10:09.000000000	F_EMMPER
+31	2	Ne pas imprimer le commentaire			2015/10/09 10:10:09.000000000	F_EMMPER
+32	2	Commentaire obligatoire si marqué mauvais			2015/10/09 10:10:09.000000000	F_EMMPER
+33	2	Commentaire obligatoire si marqué mauvais ou moyen			2015/10/09 10:10:09.000000000	F_EMMPER
+34	2	Numéro de page imprimé en bas à droite au lieu de en haut à gauche			2015/10/09 10:10:09.000000000	F_EMMPER
+35	2	Ne pas imprimer la légende			2015/10/09 10:10:09.000000000	F_EMMPER
+36	2	Inclure les commentaires de plan d'action sur le rapport HI (pas fait par défaut si option J choisie)			2015/10/09 10:10:09.000000000	F_EMMPER

@@ -1,0 +1,34 @@
+MATRICE_ID	MATRICE_NAME	MATRICE_DESC	MATRICE_COMMENT	REMOVED	UPDATED_ON	UPDATED_BY
+1000	Leaves	Leaves		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1001	Soil	Soil		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1002	Coffee and Chocolate products	Coffee and Chocolate products		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1003	Dry fruits and vegetables	Dry fruits and vegetables		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1004	Diet food	Diet food		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1005	Supplements	Supplements		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1006	Alcoholic and non-alcoholic beverages	Alcoholic and non-alcoholic beverages		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1007	Rice & Soya beans	Rice & Soya beans		F	2015/10/09 10:13:40.000000000	F_BRIREM
+1	Cereal Products	Breakfast cereals and bars, Biscuits, Flour, Pasta, Bread, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+2	Fats, Oils, Fatty products	Oils, Margarines, Oil seeds, Mayonnaise, Salad spreads, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+3	Egg Products	Eggs and derived products		F	2015/10/09 10:09:09.000000000	F_EMMPER
+4	Milk products	Milk, Butter, Cheese, Yoghurts, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+5	Meat products	Meat, Poultry, Pork products		F	2015/10/09 10:09:09.000000000	F_EMMPER
+6	Marine products	Fish, Sea food		F	2015/10/09 10:09:09.000000000	F_EMMPER
+7	Table of matrixes	Fresh, Dry, Preserved, Soups, Purees, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+8	Sugars and sweets	Sugar products, Sweeteners, Jams, Honey, Chocolate and cocoa products		F	2015/10/09 10:09:09.000000000	F_EMMPER
+9	Coffee and Tea	Coffee and Tea products, Herbal teas		F	2015/10/09 10:09:09.000000000	F_EMMPER
+10	Non alcoholic beverages	Fruit and Vegetable juices, Syrups, Sodas		F	2015/10/09 10:09:09.000000000	F_EMMPER
+11	Alcoholic beverages	Mixed alcoholic beverages,		F	2015/10/09 10:09:09.000000000	F_EMMPER
+12	Spices	Spices, Pepper, Mustard, Condiments		F	2015/10/09 10:09:09.000000000	F_EMMPER
+13	Diet food and supplements	Diet and Sports food and beverages, High Protein meals, Nutraceuticals		F	2015/10/09 10:09:09.000000000	F_EMMPER
+14	Mixed food	Cooked meals and Ready-to-eat meals, Preserves, Pizzas, Sandwiches, Fries, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+15	Fruit and vegetables			F	2015/10/09 10:09:09.000000000	F_EMMPER
+16	Nuts	Nut and nut products, Peanut, Almond, Cashew, Walnut, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+17	Deserts	Cakes, Sherbet, Ice cream, Jellies, Gelatine, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+18	Feeds	Poultry, Cattle, Pig, Fish, Pet		F	2015/10/09 10:09:09.000000000	F_EMMPER
+19	Feed ingredients	Oilseed meals, Cereal by-products, Silage, Starch products, Rendered meat, ...		F	2015/10/09 10:09:09.000000000	F_EMMPER
+20	Feed premixes	Vitamin and Mineral concentrates		F	2015/10/09 10:09:09.000000000	F_EMMPER
+21	Waters	Drinking waters, Natural mineral waters		F	2015/10/09 10:09:09.000000000	F_EMMPER
+22	Tobacco	Tobacco		F	2015/10/09 10:09:09.000000000	F_EMMPER
+23	Baby food	milk products, cereal products, homogenized meat, fruit juice, homogenized and puree fruit and vegetables, bakery products		F	2015/10/09 10:09:10.000000000	F_EMMPER
+24	Carcasses and surfaces in food production	Carcasses, carcasses sponges, carcasses swabs, surface sponge, surface swabs, surface plates		F	2015/10/09 10:09:10.000000000	F_EMMPER
+25	Materials in contact with food	Paper, paperboard, packaging, containers, plastic utensils, rubber and similar materials		F	2015/10/09 10:09:10.000000000	F_EMMPER
