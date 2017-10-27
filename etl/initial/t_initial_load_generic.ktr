@@ -10,13 +10,8 @@
     <directory>&#x2f;</directory>
     <parameters>
         <parameter>
-            <name>v_columns</name>
-            <default_value>ANALYSIS_ID, ANALYSIS_TYPE_ID, ANALYSIS_VARIATION, COMMON_NAME_ID, LAB_TYPE_ID, METHOD, REMOVED, UPDATED_BY, UPDATED_ON</default_value>
-            <description/>
-        </parameter>
-        <parameter>
             <name>v_datamartloadid</name>
-            <default_value>100</default_value>
+            <default_value>1</default_value>
             <description/>
         </parameter>
         <parameter>
@@ -26,12 +21,22 @@
         </parameter>
         <parameter>
             <name>v_destination</name>
-            <default_value>ANALYSIS</default_value>
+            <default_value/>
             <description/>
         </parameter>
         <parameter>
             <name>v_source</name>
-            <default_value>DIM_ANALYSIS</default_value>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>v_sqlstatement</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>v_whereclause</name>
+            <default_value/>
             <description/>
         </parameter>
     </parameters>
@@ -151,15 +156,11 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>ti&#x3a; DIM_TABLE</from><to>to&#x3a; Destination table</to><enabled>N</enabled> </hop>
-  <hop> <from>to&#x3a; Destination table</from><to>Execute SQL script - Success</to><enabled>N</enabled> </hop>
+  <hop> <from>ti&#x3a; DIM_TABLE</from><to>to&#x3a; Destination table</to><enabled>Y</enabled> </hop>
+  <hop> <from>Execute SQL script - Start</from><to>ti&#x3a; DIM_TABLE</to><enabled>Y</enabled> </hop>
+  <hop> <from>to&#x3a; Destination table</from><to>Execute SQL script - Success</to><enabled>Y</enabled> </hop>
+  <hop> <from>to&#x3a; Destination table</from><to>Execute SQL script - Failure</to><enabled>Y</enabled> </hop>
   <hop> <from>Execute SQL script - Truncate table</from><to>Execute SQL script - Start</to><enabled>Y</enabled> </hop>
-  <hop> <from>Execute SQL script - Start</from><to>Get Variables</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get Variables</from><to>Add constants </to><enabled>Y</enabled> </hop>
-  <hop> <from>Concat Fields</from><to>ti&#x3a; DIM_TABLE</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add constants </from><to>Concat Fields 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concat Fields 2</from><to>Concat Fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concat Fields</from><to>Text file output</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>ti&#x3a; DIM_TABLE</name>
@@ -181,7 +182,7 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
+      <xloc>304</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
       </GUI>
@@ -191,7 +192,7 @@
     <name>to&#x3a; Destination table</name>
     <type>TableOutput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -204,7 +205,7 @@
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
+    <use_batch>N</use_batch>
     <specify_fields>N</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
@@ -255,7 +256,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
+      <xloc>304</xloc>
       <yloc>512</yloc>
       <draw>Y</draw>
       </GUI>
@@ -277,7 +278,7 @@
     <single_statement>Y</single_statement>
     <replace_variables>Y</replace_variables>
     <quoteString>N</quoteString>
-    <sql>UPDATE DATAMARTLOADTABLESTATUS&#xd;&#xa;SET EndDate &#x3d;CURRENT_DATE&#xd;&#xa;WHERE DataMartLoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND DataMartTableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
+    <sql>UPDATE DATAMARTLOADTABLESTATUS&#xd;&#xa;SET EndDate &#x3d;SYSDATE&#xd;&#xa;WHERE DataMartLoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND DataMartTableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
@@ -287,8 +288,8 @@
     </arguments>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>720</yloc>
+      <xloc>304</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -306,27 +307,65 @@
            </partitioning>
     <connection>GDM - Destination</connection>
     <execute_each_row>N</execute_each_row>
-    <single_statement>Y</single_statement>
+    <single_statement>N</single_statement>
     <replace_variables>Y</replace_variables>
     <quoteString>N</quoteString>
-    <sql>INSERT INTO DATAMARTLOADTABLESTATUS &#xd;&#xa;&#x28;&#xd;&#xa;DataMartLoadID &#xd;&#xa;,DataMartTableID &#xd;&#xa;,StartDate &#x29;&#xd;&#xa;VALUES &#x28;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;		,&#x24;&#x7b;v_datamarttableid&#x7d;&#xd;&#xa;		,CURRENT_DATE&#x29;</sql>
+    <sql>INSERT INTO DATAMARTLOADTABLESTATUS &#xd;&#xa;	&#x28;&#xd;&#xa;	DataMartLoadID &#xd;&#xa;	,DataMartTableID &#xd;&#xa;	,StartDate &#x29;&#xd;&#xa;VALUES &#xd;&#xa;	&#x28;&#xd;&#xa;	&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;	,&#x24;&#x7b;v_datamarttableid&#x7d;&#xd;&#xa;	,SYSDATE&#x29;</sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
     <delete_field/>
     <read_field/>
     <arguments>
+       <argument><name>v_loadid</name></argument>
+       <argument><name>v_tableid</name></argument>
     </arguments>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>64</yloc>
+      <xloc>304</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
     <name>Execute SQL script - Truncate table</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>GDM - Destination</connection>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>TRUNCATE TABLE &#x24;&#x7b;v_destination&#x7d;</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+       <argument><name>V_SOURCE</name></argument>
+       <argument><name>V_DESTINATION</name></argument>
+       <argument><name>V_WHERECLAUSE</name></argument>
+       <argument><name>V_SQLSTATEMENT</name></argument>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>304</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Execute SQL script - Failure</name>
     <type>ExecSQL</type>
     <description/>
     <distribute>Y</distribute>
@@ -341,7 +380,7 @@
     <single_statement>Y</single_statement>
     <replace_variables>Y</replace_variables>
     <quoteString>N</quoteString>
-    <sql>TRUNCATE TABLE &#x24;&#x7b;v_destination&#x7d;</sql>
+    <sql>UPDATE 	DATAMARTLOADTABLESTATUS&#xd;&#xa;SET 	EndDate &#x3d;CURRENT_DATE,&#xd;&#xa;		ErrorMessage&#x3d; &#x27;ERROR&#x27;&#xd;&#xa;WHERE 	DataMartLoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND 	DataMartTableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
@@ -351,432 +390,8 @@
     </arguments>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>0</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Concat Fields</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator> 	</separator>
-    <enclosure>&#x27;</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>file</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>v_select</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_column_names</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_from</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_gdwtable</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_semi</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-<targetFieldName>v_sqlstatement</targetFieldName>
-<targetFieldLength>10000</targetFieldLength>
-<removeSelectedFields>N</removeSelectedFields>
-    </ConcatFields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add constants </name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>v_select</name>
-        <type>string</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>Select </nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>v_from</name>
-        <type>string</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>From </nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>v_semi</name>
-        <type>string</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>&#x3b;</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>v_period</name>
-        <type>string</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>.</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Get Variables</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>v_column_names</name>
-        <variable>&#x24;&#x7b;v_columns&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>v_source_table</name>
-        <variable>&#x24;&#x7b;v_source&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>v_db</name>
-        <variable>&#x24;&#x7b;mxns.gdm.db.gdw&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>v_schema</name>
-        <variable>&#x24;&#x7b;mxns.gdm.schema.gdw&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Concat Fields 2</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>file</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>v_db</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_period</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_schema</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_period</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>v_source_table</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-<targetFieldName>v_gdwtable</targetFieldName>
-<targetFieldLength>10000</targetFieldLength>
-<removeSelectedFields>N</removeSelectedFields>
-    </ConcatFields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Text file output</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>&#x3b;</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>file</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>608</xloc>
-      <yloc>336</yloc>
+      <xloc>480</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -784,10 +399,10 @@
   <step_error_handling>
       <error>
         <source_step>to&#x3a; Destination table</source_step>
-        <target_step>Execute SQL script- Failure</target_step>
+        <target_step>Execute SQL script - Failure</target_step>
         <is_enabled>Y</is_enabled>
         <nr_valuename/>
-        <descriptions_valuename/>
+        <descriptions_valuename>&#x24;&#x7b;v_error_description&#x7d;</descriptions_valuename>
         <fields_valuename/>
         <codes_valuename/>
         <max_errors/>
