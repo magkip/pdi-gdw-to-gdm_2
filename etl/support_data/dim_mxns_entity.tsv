@@ -1,7 +1,0 @@
-MXNS_ENTITY_ID	MXNS_ENTITY_LEGAL_DESC	MXNS_ENTITY_DESC	MXNS_CUST_SERVICE_ID	DEFAULT_DATE_FORMAT	DEFAULT_LANGUAGE_ID	IS_ACTIVE	UPDATED_ON	UPDATED_BY
-1	Silliker S.A.S	Mérieux NutriSciences France	1	dd/MM/yyyy	2	T	2015/10/09 10:09:39.000000000	F_EMMPER
-2	Silliker B.V.	Mérieux NutriSciences Netherlands	2	dd/MM/yyyy	3	T	2015/10/09 10:09:39.000000000	F_EMMPER
-3	Silliker Netherlands B.V./Chemical Laboratory Dr. A. Verwey	Dr. Verwey		dd/MM/yyyy	3	T	2015/10/09 10:09:39.000000000	F_EMMPER
-4	Silliker NV/SA	Silliker Belgium		dd/MM/yyyy	1	T	2015/10/09 10:09:39.000000000	F_EMMPER
-5	bioFortis	bioFortis		dd/MM/yyyy	2	T	2015/10/09 10:09:39.000000000	F_EMMPER
-6	Silliker Australia	Mérieux NutriSciences Australia	3	MM/dd/yyyy	1	T	2015/10/09 10:09:39.000000000	F_EMMPER

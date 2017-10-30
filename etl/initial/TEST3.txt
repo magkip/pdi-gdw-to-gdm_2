@@ -1,2 +1,0 @@
-v_column_names;v_source_table;v_db;v_schema
-ANALYSIS_ID, ANALYSIS_TYPE_ID, ANALYSIS_VARIATION, COMMON_NAME_ID, LAB_TYPE_ID, METHOD, REMOVED, UPDATED_BY, UPDATED_ON;DIM_ANALYSIS                                                                                                           ;DEV_GDW                                                                                                                ;GDW                                                                                                                    

@@ -163,6 +163,140 @@
   <hop> <from>Execute SQL script - Truncate table</from><to>Execute SQL script - Start</to><enabled>Y</enabled> </hop>
   </order>
   <step>
+    <name>Execute SQL script - Failure</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>GDM - Destination</connection>
+    <execute_each_row>N</execute_each_row>
+    <single_statement>Y</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>UPDATE 	DataMart_LoadTableStatus&#xd;&#xa;SET 	EndDate &#x3d;CURRENT_DATE,&#xd;&#xa;		ErrorMessage&#x3d; &#x27;ERROR&#x27;&#xd;&#xa;WHERE 	DataMart_LoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND 	DataMart_TableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>480</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Execute SQL script - Start</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>GDM - Destination</connection>
+    <execute_each_row>N</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>INSERT INTO DataMart_LoadTableStatus&#xd;&#xa;	&#x28;&#xd;&#xa;	DataMart_LoadID &#xd;&#xa;	,DataMart_TableID &#xd;&#xa;	,StartDate &#x29;&#xd;&#xa;VALUES &#xd;&#xa;	&#x28;&#xd;&#xa;	&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;	,&#x24;&#x7b;v_datamarttableid&#x7d;&#xd;&#xa;	,SYSDATE&#x29;</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+       <argument><name>v_loadid</name></argument>
+       <argument><name>v_tableid</name></argument>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>304</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Execute SQL script - Success</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>GDM - Destination</connection>
+    <execute_each_row>N</execute_each_row>
+    <single_statement>Y</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>UPDATE DataMart_LoadTableStatus&#xd;&#xa;SET EndDate &#x3d;SYSDATE&#xd;&#xa;WHERE DataMart_LoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND DataMart_TableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>304</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Execute SQL script - Truncate table</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>GDM - Destination</connection>
+    <execute_each_row>N</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>TRUNCATE TABLE &#x24;&#x7b;v_destination&#x7d;</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+       <argument><name>V_SOURCE</name></argument>
+       <argument><name>V_DESTINATION</name></argument>
+       <argument><name>V_WHERECLAUSE</name></argument>
+       <argument><name>V_SQLSTATEMENT</name></argument>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>304</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>ti&#x3a; DIM_TABLE</name>
     <type>TableInput</type>
     <description/>
@@ -257,140 +391,6 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>304</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Execute SQL script - Success</name>
-    <type>ExecSQL</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>GDM - Destination</connection>
-    <execute_each_row>N</execute_each_row>
-    <single_statement>Y</single_statement>
-    <replace_variables>Y</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>UPDATE DATAMARTLOADTABLESTATUS&#xd;&#xa;SET EndDate &#x3d;SYSDATE&#xd;&#xa;WHERE DataMartLoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND DataMartTableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
-    <set_params>N</set_params>
-    <insert_field/>
-    <update_field/>
-    <delete_field/>
-    <read_field/>
-    <arguments>
-    </arguments>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>304</xloc>
-      <yloc>656</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Execute SQL script - Start</name>
-    <type>ExecSQL</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>GDM - Destination</connection>
-    <execute_each_row>N</execute_each_row>
-    <single_statement>N</single_statement>
-    <replace_variables>Y</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>INSERT INTO DATAMARTLOADTABLESTATUS &#xd;&#xa;	&#x28;&#xd;&#xa;	DataMartLoadID &#xd;&#xa;	,DataMartTableID &#xd;&#xa;	,StartDate &#x29;&#xd;&#xa;VALUES &#xd;&#xa;	&#x28;&#xd;&#xa;	&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;	,&#x24;&#x7b;v_datamarttableid&#x7d;&#xd;&#xa;	,SYSDATE&#x29;</sql>
-    <set_params>N</set_params>
-    <insert_field/>
-    <update_field/>
-    <delete_field/>
-    <read_field/>
-    <arguments>
-       <argument><name>v_loadid</name></argument>
-       <argument><name>v_tableid</name></argument>
-    </arguments>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>304</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Execute SQL script - Truncate table</name>
-    <type>ExecSQL</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>GDM - Destination</connection>
-    <execute_each_row>Y</execute_each_row>
-    <single_statement>N</single_statement>
-    <replace_variables>Y</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>TRUNCATE TABLE &#x24;&#x7b;v_destination&#x7d;</sql>
-    <set_params>N</set_params>
-    <insert_field/>
-    <update_field/>
-    <delete_field/>
-    <read_field/>
-    <arguments>
-       <argument><name>V_SOURCE</name></argument>
-       <argument><name>V_DESTINATION</name></argument>
-       <argument><name>V_WHERECLAUSE</name></argument>
-       <argument><name>V_SQLSTATEMENT</name></argument>
-    </arguments>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>304</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Execute SQL script - Failure</name>
-    <type>ExecSQL</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>GDM - Destination</connection>
-    <execute_each_row>N</execute_each_row>
-    <single_statement>Y</single_statement>
-    <replace_variables>Y</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>UPDATE 	DATAMARTLOADTABLESTATUS&#xd;&#xa;SET 	EndDate &#x3d;CURRENT_DATE,&#xd;&#xa;		ErrorMessage&#x3d; &#x27;ERROR&#x27;&#xd;&#xa;WHERE 	DataMartLoadID &#x3d;&#x24;&#x7b;v_datamartloadid&#x7d;&#xd;&#xa;AND 	DataMartTableID &#x3d;&#x24;&#x7b;v_datamarttableid&#x7d;</sql>
-    <set_params>N</set_params>
-    <insert_field/>
-    <update_field/>
-    <delete_field/>
-    <read_field/>
-    <arguments>
-    </arguments>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
       <yloc>512</yloc>
       <draw>Y</draw>
       </GUI>

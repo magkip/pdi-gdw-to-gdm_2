@@ -19,9 +19,9 @@ BEGIN
 			and NOT REGEXP_LIKE(t.TABLE_NAME , '[[:digit:]]')
 			and t.TABLE_NAME not in ('MXNS_ESTAR_USER_IMPORT','MXNS_LOAD_LOG','MXNS_USER_SESSIONS','APPLICATION_STATUS','SNP_CHECK_TAB')
 			and t.TABLE_NAME not in ('AUDIT_REPORTS','CHECKLIST_TRANS_BKP','CONCL_LEVEL','COUNTRY',
-			'CUST_SERVICE','SERVICE_FAMILY','SOURCE_INSTANCE','ITEM_TRANS_BKP','ACCREDITATION')
+			'CUST_SERVICE','SERVICE_FAMILY','SOURCE_INSTANCE','ITEM_TRANS_BKP','ACCREDITATION','LAB_TYPE','LANGUAGE','STATUS')
 			--AND SUBSTR(t.table_name,1,1) ='A'
-			--AND t.table_name = 'UNIT_TRANS'
+			--AND t.table_name = 'ANALYSIS_TRANS'
 			ORDER BY t.table_name
 	)
 	loop
@@ -29,7 +29,7 @@ BEGIN
 		r_table_name :=x.table_name;
 		begin 
 		--	dbms_output.put_line('drop table '||r_owner||'.'||r_table_name||';');
-			dbms_output.put_line('create table '||r_owner||'.'||r_table_name||'('); 
+			dbms_output.put_line('CREATE TABLE '||r_owner||'.'||r_table_name||'('); 
 			starting:=TRUE;
 			for r in (select column_name, data_type, data_length, data_precision, data_scale, data_default, nullable 
 					from all_tab_columns 
@@ -83,15 +83,16 @@ BEGIN
 					dbms_output.put_line (',');
 					dbms_output.put_line('CONSTRAINT ' ||pk.constraint_name ||' PRIMARY KEY (' || pkcolumns||')'); 
 			END LOOP;
-		/*		pkcolumns:='';
-			startingpk:=TRUE;
+				pkcolumns:='';
+			 
 			for ck in (select constraint_name, search_condition from user_constraints where table_name = upper(r_table_name) AND constraint_type ='C') 
 				loop 
-					if startingpk then 
+					/*if startingpk then 
 					startingpk:=false; 
 					else 
 					dbms_output.put_line(','); 
-					end if;
+					end if;*/
+					dbms_output.put_line(','); 
 					dbms_output.put_line('CONSTRAINT ' ||ck.constraint_name ||' CHECK  (' || ck.search_condition||')'); 
 			END LOOP;
 			
@@ -112,12 +113,12 @@ BEGIN
 					if (LENGTH(ukcolumns)>=1) then
 					ukcolumns:=SUBSTR(ukcolumns,1,LENGTH(ukcolumns)-1);
 					end if;
-					dbms_output.put_line('CREATE UNIQUE INDEX ' ||uk.index_name ||' ON ' ||uk.table_name ||' (' ||ukcolumns ||');'); 
+					--dbms_output.put_line('CREATE UNIQUE INDEX ' ||uk.index_name ||' ON ' ||uk.table_name ||' (' ||ukcolumns ||');'); 
 					  
 			END LOOP;
-			*/
+			 
 		
-		dbms_output.put_line(' );  '); 
+		--dbms_output.put_line(' );  '); 
 		end; 
 		END LOOP;
 		
@@ -126,5 +127,3 @@ BEGIN
 		dbms_output.put_line('   '); 
 		
  END;
-
- 

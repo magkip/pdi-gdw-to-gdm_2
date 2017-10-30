@@ -112,7 +112,7 @@
       <yloc>160</yloc>
       </entry>
     <entry>
-      <name>sql&#x3a; create DDL for gdm schema</name>
+      <name>sql&#x3a; Execute DDL for gdm schema</name>
       <description/>
       <type>SQL</type>
       <sql/>
@@ -130,6 +130,15 @@
   </entries>
   <hops>
     <hop>
+      <from>t_drop_all_gdm_schema_objects</from>
+      <to>sql&#x3a; Execute DDL for gdm schema</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>START</from>
       <to>t_drop_all_gdm_schema_objects</to>
       <from_nr>0</from_nr>
@@ -137,15 +146,6 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>t_drop_all_gdm_schema_objects</from>
-      <to>sql&#x3a; create DDL for gdm schema</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

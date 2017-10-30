@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>t_initial_load_category</name>
+    <name>t_get_datamart_load_information_bytable</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -9,6 +9,16 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
+        <parameter>
+            <name>v_dataloadID</name>
+            <default_value>99</default_value>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>v_loadgroup</name>
+            <default_value>99</default_value>
+            <description/>
+        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -17,7 +27,7 @@
 <size_limit_lines/>
 <interval/>
 <timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
 <perf-log-table><connection/>
 <schema/>
 <table/>
@@ -67,9 +77,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2017&#x2f;08&#x2f;01 09&#x3a;12&#x3a;29.475</created_date>
+  <created_date>2017&#x2f;10&#x2f;25 14&#x3a;59&#x3a;33.540</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2017&#x2f;10&#x2f;03 13&#x3a;16&#x3a;25.429</modified_date>
+  <modified_date>2017&#x2f;10&#x2f;25 14&#x3a;59&#x3a;33.540</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -99,37 +109,30 @@
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
-  <connection>
-    <name>GDW - Source</name>
-    <server/>
-    <type>GENERIC</type>
-    <access>Native</access>
-    <database/>
-    <port>-1</port>
-    <username>&#x24;&#x7b;mxns.gdm.src.username&#x7d;</username>
-    <password>&#x24;&#x7b;mxns.gdm.src.password&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;mxns.gdm.src.driverclassname&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;mxns.gdm.src.connectionurl&#x7d;</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>-1</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
   <order>
-  <hop> <from>ti&#x3a; DIM__CATEGORIES</from><to>to&#x3a; CATEGORY</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Table Information</from><to>Copy rows to result</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>ti&#x3a; DIM__CATEGORIES</name>
+    <name>Copy rows to result</name>
+    <type>RowsToResult</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>240</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get Table Information</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -139,87 +142,17 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>GDW - Source</connection>
-    <sql>SELECT 	CATEGORY_ID&#xd;&#xa;		, LANGUAGE_ID&#xd;&#xa;		, CATEGORY_NAME&#xd;&#xa;		, CATEGORY_DESC&#xd;&#xa;		, CATEGORY_TYPE&#xd;&#xa;		, PARENT_CATEGORY_ID&#xd;&#xa;		, UPDATED_ON&#xd;&#xa;		, UPDATED_BY&#xd;&#xa;FROM 	&#x24;&#x7b;mxns.gdm.db.gdw&#x7d;.&#x24;&#x7b;mxns.gdm.schema.gdw&#x7d;.DIM_CATEGORIES&#xd;&#xa;</sql>
-    <limit>&#x24;&#x7b;mxns.gdm.db.rowsizelimit&#x7d;</limit>
+    <connection>GDM - Destination</connection>
+    <sql>SELECT   &#x24;&#x7b;v_dataloadID&#x7d; as v_datamartloadID&#xd;&#xa;		,dmt.DataMart_TableID as v_datamarttableID&#xd;&#xa;		,dmt.loadorder as v_loadorder&#xd;&#xa;		,dmt.loadgroup as v_loadgroup&#xd;&#xa;		,dmt.Source as v_source&#xd;&#xa;		,dmt.Destination as v_destination&#xd;&#xa;		,dmt.WHERECLAUSE as v_whereclause&#xd;&#xa;		,dmt.sqlstatement as v_sqlstatement&#xd;&#xa;FROM DataMart_Table dmt&#xd;&#xa;WHERE disabled&#x3d;&#x27;N&#x27;&#xd;&#xa;AND  dmt.loadgroup &#x3d; &#x24;&#x7b;v_loadgroup&#x7d;&#xd;&#xa; &#xd;&#xa;	&#xd;&#xa;&#xd;&#xa;	</sql>
+    <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>to&#x3a; CATEGORY</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>GDM - Destination</connection>
-    <schema>&#x24;&#x7b;mxns.gdm.schema.gdm&#x7d;</schema>
-    <table>CATEGORY</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-        <field>
-          <column_name>CATEGORY_ID</column_name>
-          <stream_name>CATEGORY_ID</stream_name>
-        </field>
-        <field>
-          <column_name>LANGUAGE_ID</column_name>
-          <stream_name>LANGUAGE_ID</stream_name>
-        </field>
-        <field>
-          <column_name>CATEGORY_NAME</column_name>
-          <stream_name>CATEGORY_NAME</stream_name>
-        </field>
-        <field>
-          <column_name>CATEGORY_DESC</column_name>
-          <stream_name>CATEGORY_DESC</stream_name>
-        </field>
-        <field>
-          <column_name>CATEGORY_TYPE</column_name>
-          <stream_name>CATEGORY_TYPE</stream_name>
-        </field>
-        <field>
-          <column_name>PARENT_CATEGORY_ID</column_name>
-          <stream_name>PARENT_CATEGORY_ID</stream_name>
-        </field>
-        <field>
-          <column_name>UPDATED_ON</column_name>
-          <stream_name>UPDATED_ON</stream_name>
-        </field>
-        <field>
-          <column_name>UPDATED_BY</column_name>
-          <stream_name>UPDATED_BY</stream_name>
-        </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>208</yloc>
+      <xloc>240</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

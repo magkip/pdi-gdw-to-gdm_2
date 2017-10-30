@@ -142,7 +142,7 @@
            <schema_name/>
            </partitioning>
     <connection>GDM_Destination</connection>
-    <sql>select &#x27;drop table &#x27;&#x7c;&#x7c; table_name as SQLStatementTables&#xd;&#xa;from user_tables&#xd;&#xa;&#xd;&#xa; </sql>
+    <sql>select &#x27;drop table &#x27;&#x7c;&#x7c; table_name as SQLStatementTables&#xd;&#xa;from user_tables where table_name NOT LIKE &#x27;DATAMART&#x25;&#x27;&#xd;&#xa;&#xd;&#xa; </sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>

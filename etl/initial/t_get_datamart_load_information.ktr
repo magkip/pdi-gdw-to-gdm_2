@@ -6,8 +6,14 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
+        <parameter>
+            <name>v_DataLoadType</name>
+            <default_value>INITIAL</default_value>
+            <description/>
+        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -99,7 +105,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Get Table Information</from><to>Copy rows to result</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Variables</from><to>Insert DataMart_LoadID</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Copy rows to result</name>
@@ -121,8 +127,41 @@
     </step>
 
   <step>
-    <name>Get Table Information</name>
-    <type>TableInput</type>
+    <name>Get Variables</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>v_DataLoadType</name>
+        <variable>v_DataLoadType</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>240</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Insert DataMart_LoadID</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -132,16 +171,22 @@
            <schema_name/>
            </partitioning>
     <connection>GDM - Destination</connection>
-    <sql>SELECT  111 as v_datamartloadID&#xd;&#xa;		,dmt.DataMartTableID as v_datamarttableID&#xd;&#xa;		,dmt.loadorder as v_loadorder&#xd;&#xa;		,dmt.loadgroup as v_loadgroup&#xd;&#xa;		,dmt.Source as v_source&#xd;&#xa;		,dmt.Destination as v_destination&#xd;&#xa;		,dmt.WHERECLAUSE as v_whereclause&#xd;&#xa;		,dmt.sqlstatement as v_sqlstatement&#xd;&#xa;FROM DataMartTable dmt&#xd;&#xa;WHERE disabled&#x3d;&#x27;N&#x27;&#xd;&#xa;and datamarttableID IN &#x28;10,11,12,18,20,21,22,23,&#xd;&#xa;24,&#xd;&#xa;25,&#xd;&#xa;26,&#xd;&#xa;27&#xd;&#xa;&#x29;&#xd;&#xa; &#xd;&#xa;	</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>DataMart_Load</table>
+      <key>
+        <name>v_DataLoadType</name>
+        <field>DATAMART_LOADTYPE</field>
+        <condition/>
+        <name2/>
+      </key>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>240</xloc>
-      <yloc>128</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
